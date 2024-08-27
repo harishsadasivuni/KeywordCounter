@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<header>
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="./index.js"></script>
+</header>
+<style>
+    table,
+    th,
+    td {
+        border: 1px solid black;
+        margin: auto;
+    }
+    td, th{
+        padding: 5px;
+    }
+    label {
+        vertical-align: top;
+        font-size: xx-large;
+        text-align: center;
+        width: max-content;
+    }
+
+    button {
+        padding: 10px;
+        font-size: larger;
+        background-color: #43ff4d;
+        border-radius: 8px;
+    }
+
+    form {
+        padding: 20px;
+    }
+
+    textarea {
+        width: -webkit-fill-available;
+        min-height: 140px;
+        border-radius: 10px;
+    }
+    #confirmBox{
+        display: none;
+    }
+    .checker{
+        padding: 10px;
+        font-size: larger;
+        background-color: #43ff4d;
+        border-radius: 8px;
+    }
+    .message{
+        font-size: xx-large;
+        padding: 20px;
+    }
+    #dynamictable{
+        text-align: center;
+    }
+</style>
+
+<body>
+    <section>
+        <form id="form">
+            <label for="fieldOne">Keywords: </label>
+            <textarea id="fieldOne" name="fieldOne"></textarea>
+            <button id="submit" onclick="keywordsHandler(event)">Add & See Table</button>
+            <button onclick="clearCountchecker(event)">Clear Count</button>
+        </form>
+
+    </section>
+    <div id="confirmBox">
+        <div class="message">Do you really want to clear counter?</div>
+        <button class="checker" onclick="clearCount()">Yes</button>
+        <button class="checker" onclick="document.getElementById('confirmBox').style.display = 'none';">No</button>
+    </div>
+
+    <span id="dynamictable"></span>
+    </table>
+
+    
+</body>
+
+</html>
