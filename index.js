@@ -57,9 +57,13 @@ function dynamicTable(map1){
     const sortedMap = new Map(mapEntries);
 
     let demoTable = "<table><tr><th>Keyword</th><th>Count</th></tr>";
+    var count = 0;
     for (const [key, value] of sortedMap) {
-        if(key != "")
+        if(key != ""){
+            count++;
         demoTable = demoTable + "<tr> <td>"+key+"</td><td>"+value+"</td></tr>";
+        }
+        document.getElementById("counter").innerHTML = count;
       }
     var dynamictable = document.getElementById("dynamictable");
     dynamictable.innerHTML = demoTable + "</table>";

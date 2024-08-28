@@ -54,6 +54,10 @@
     #dynamictable{
         text-align: center;
     }
+    .countmention{
+        display: contents;
+        font-size: larger;
+    }
 </style>
 
 <body>
@@ -63,6 +67,7 @@
             <textarea id="fieldOne" name="fieldOne"></textarea>
             <button id="submit" onclick="keywordsHandler(event)">Add & See Table</button>
             <button onclick="clearCountchecker(event)">Clear Count</button>
+            <p class="countmention">Total Count: <span id="counter">0</span></p>
         </form>
 
     </section>
