@@ -9,10 +9,11 @@ var keywordsHandler = (e) => {
         setCookie("keywordHighliter",null,365);
     }
     for (let a of array) {
-        if (map1.get(a.trim().toUpperCase()) > 0) {
-            map1.set(a.trim().toUpperCase(), map1.get(a.trim().toUpperCase()) + 1);
+        a = a.trim().toUpperCase();
+        if (map1.get(a) > 0) {
+            map1.set(a, map1.get(a) + 1);
         } else {
-            map1.set(a.trim().toUpperCase(), 1);
+            map1.set(a, 1);
         }
     }
     //console.log(map1);
