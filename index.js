@@ -2,8 +2,8 @@ var keywordsHandler = (e) => {
     e.preventDefault();
     
     let array = document.getElementById("fieldOne").value.toString().trim().split(",");
-    if(getCookie("keywordHighliter") != ""){
-       var map1 = new Map(JSON.parse(getCookie("keywordHighliter")));
+    if(localStorage.getItem("keywordHighliter") != ""){
+       var map1 = new Map(JSON.parse(localStorage.getItem("keywordHighliter")));
     }else{
         var map1 = new Map();
     }
@@ -16,40 +16,26 @@ var keywordsHandler = (e) => {
         }
     }
     //console.log(map1);
-    setCookie("keywordHighliter",JSON.stringify([...map1]),365);
-    //console.log("cookie value is  -> "+getCookie("keywordHighliter"));
-    
+    localStorage.setItem("keywordHighliter", JSON.stringify([...map1]));
+    localStorageSpace();
     dynamicTable(map1);
     document.getElementById("fieldOne").value = null;
 }
+var localStorageSpace = function(){
+    var allStrings = '';
+    for(var key in window.localStorage){
+        allStrings += key;
+        if(window.localStorage.hasOwnProperty(key)){
+            allStrings += window.localStorage[key];
+        }
+    }
+    document.getElementById("memory").innerHTML = ( allStrings ? 3 + ((allStrings.length*16)/(8*1024)) + ' KB used out of 4MB.' : 'Memory full clear space.');
+};
 var clearCount = (e) => {
     document.getElementById('confirmBox').style.display = 'none';
-    setCookie("keywordHighliter",null,365);
+    localStorage.setItem("keywordHighliter",null);
     $("#submit").click();
-}
-function setCookie(name, value, days) {
-    var expires = "";
-    if (days) {
-        var date = new Date();
-        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-        expires = "; expires=" + date.toUTCString();
-    }
-    document.cookie = name + "=" + (value || "") + expires + "; path=/";
-}
-function getCookie(cname) {
-    var name = cname + "=";
-    var decodedCookie = decodeURIComponent(document.cookie);
-    var ca = decodedCookie.split(';');
-    for (var i = 0; i < ca.length; i++) {
-        var c = ca[i];
-        while (c.charAt(0) == ' ') {
-            c = c.substring(1);
-        }
-        if (c.indexOf(name) == 0) {
-            return c.substring(name.length, c.length);
-        }
-    }
-    return "";
+    document.getElementById("memory").innerHTML = 0;
 }
 function dynamicTable(map1){
     const mapEntries = Array.from(map1.entries());

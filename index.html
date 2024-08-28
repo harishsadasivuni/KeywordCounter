@@ -56,7 +56,9 @@
     .countmention{
         display: contents;
         font-size: larger;
+        padding-left: 50px;
     }
+    
 </style>
 
 <body>
@@ -67,6 +69,7 @@
             <button id="submit" onclick="keywordsHandler(event)">Add & See Table</button>
             <button onclick="clearCountchecker(event)">Clear Count</button>
             <p class="countmention">Total Count: <span id="counter">0</span></p>
+            <p class="countmention">   |   Memory Used: <span id="memory">0</span></p>
         </form>
 
     </section>
