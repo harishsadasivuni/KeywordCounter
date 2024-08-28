@@ -10,8 +10,8 @@ var keywordsHandler = (e) => {
     }
     for (let a of array) {
         a = a.trim().toUpperCase();
-        if (map1.get(a) > 0) {
-            map1.set(a, map1.get(a) + 1);
+        if (map1.get(a.toString()) > 0) {
+            map1.set(a, map1.get(a.toString()) + 1);
         } else {
             map1.set(a, 1);
         }
