@@ -2,11 +2,10 @@ var keywordsHandler = (e) => {
     e.preventDefault();
     
     let array = document.getElementById("fieldOne").value.toString().trim().split(",");
-    var map1 = new Map();
     if(getCookie("keywordHighliter") != ""){
-        map1 = new Map(JSON.parse(getCookie("keywordHighliter")));
+       var map1 = new Map(JSON.parse(getCookie("keywordHighliter")));
     }else{
-        setCookie("keywordHighliter",null,365);
+        var map1 = new Map();
     }
     for (let a =0;a<array.length;a++) {
         array[a] = array[a].trim().toUpperCase();
